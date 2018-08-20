@@ -56,7 +56,7 @@ const violationsReporter = (testPages, reportType) => {
       break;
     }
     case 'comment-pr': {
-      const prSha = process.env.TRAVIS_PULL_REQUEST_SHA;
+      const sha = process.env.TRAVIS_PULL_REQUEST_SHA || process.env.TRAVIS_COMMIT;
       const repoSlug = process.env.TRAVIS_REPO_SLUG;
       const githubToken = process.env.GH_TOKEN;
       const buildId = process.env.TRAVIS_BUILD_ID;
@@ -65,7 +65,7 @@ const violationsReporter = (testPages, reportType) => {
       console.log(`process.env.TRAVIS_COMMIT: ${process.env.TRAVIS_COMMIT}`);
       console.log(`githubToken: ${githubToken}`);
 
-      const url = `https://api.github.com/repos/${repoSlug}/statuses/${prSha}?access_token=${githubToken}`;
+      const url = `https://api.github.com/repos/${repoSlug}/statuses/${sha}?access_token=${githubToken}`;
 
       axios
         // query all the pages we want to run our a11y tests against
