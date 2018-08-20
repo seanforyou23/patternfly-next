@@ -54,6 +54,18 @@ const violationsReporter = (testPages, reportType) => {
       console.log(`${logColors.yellow}%s${logColors.reset}`, `Raw audit data available at: ${location}\n`);
       break;
     }
+    case 'comment-pr': {
+      console.log(`TRAVIS_REPO_SLUG: ${process.env.TRAVIS_REPO_SLUG}`);
+      console.log(`TRAVIS_BUILD_ID: ${process.env.TRAVIS_BUILD_ID}`);
+      console.log(`TRAVIS_COMMIT: ${process.env.TRAVIS_COMMIT}`);
+      console.log(`TRAVIS_BUILD_NUMBER: ${process.env.TRAVIS_BUILD_NUMBER}`);
+
+      // process.env.TRAVIS_BUILD_NUMBER
+
+      // let url = `https://api.github.com/repos/seanforyou23/patternfly-next/statuses/`
+
+      break;
+    }
     default: {
       logOutput(testPages);
     }
