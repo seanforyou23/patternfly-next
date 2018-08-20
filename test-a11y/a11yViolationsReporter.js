@@ -61,16 +61,11 @@ const violationsReporter = (testPages, reportType) => {
       const githubToken = process.env.GH_TOKEN;
       const buildId = process.env.TRAVIS_BUILD_ID;
 
-      // console.log(`TRAVIS_REPO_SLUG: ${repoSlug}`);
-      // console.log(`TRAVIS_BUILD_ID: ${process.env.TRAVIS_BUILD_ID}`);
-      // console.log(`TRAVIS_COMMIT: ${prSha}`);
-      // console.log(`githubToken: ${githubToken}`);
-
-      // process.env.TRAVIS_BUILD_NUMBER
+      console.log(`process.env.TRAVIS_PULL_REQUEST_SHA: ${process.env.TRAVIS_PULL_REQUEST_SHA}`);
+      console.log(`process.env.TRAVIS_COMMIT: ${process.env.TRAVIS_COMMIT}`);
+      console.log(`githubToken: ${githubToken}`);
 
       const url = `https://api.github.com/repos/${repoSlug}/statuses/${prSha}?access_token=${githubToken}`;
-      // curl -i -u seanforyou23 -d '{"state": "failure"}' https://api.github.com/repos/seanforyou23/patternfly-next/statuses/201738342551f3bfb890d94de0c684c60c06bbbd?access_token=b64db896883f50f8aaba3351b2eca129ece964f5
-      // curl -i -d -u seanforyou23 '{"state": "failure"}' https://api.github.com/repos/seanforyou23/patternfly-next/statuses/064bcbeea326ab233dc504988a34356204995643?access_token=b64db896883f50f8aaba3351b2eca129ece964f5
 
       axios
         // query all the pages we want to run our a11y tests against
