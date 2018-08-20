@@ -1,6 +1,7 @@
 /* eslint no-console: 0 */
 const fs = require('fs');
 const path = require('path');
+// const axios = require('axios');
 
 const violatingPages = [];
 const violations = [];
@@ -55,14 +56,35 @@ const violationsReporter = (testPages, reportType) => {
       break;
     }
     case 'comment-pr': {
-      console.log(`TRAVIS_REPO_SLUG: ${process.env.TRAVIS_REPO_SLUG}`);
+      const commitHash = process.env.TRAVIS_COMMIT;
+      const repoSlug = process.env.TRAVIS_REPO_SLUG;
+      const githubToken = process.env.GH_TOKEN;
+
+      console.log(`TRAVIS_REPO_SLUG: ${repoSlug}`);
       console.log(`TRAVIS_BUILD_ID: ${process.env.TRAVIS_BUILD_ID}`);
-      console.log(`TRAVIS_COMMIT: ${process.env.TRAVIS_COMMIT}`);
+      console.log(`TRAVIS_COMMIT: ${commitHash}`);
       console.log(`TRAVIS_BUILD_NUMBER: ${process.env.TRAVIS_BUILD_NUMBER}`);
+      console.log(`githubToken: ${githubToken}`);
 
       // process.env.TRAVIS_BUILD_NUMBER
 
-      // let url = `https://api.github.com/repos/seanforyou23/patternfly-next/statuses/`
+      // let url = `https://api.github.com/repos/${repoSlug}/statuses/${commitHash}?access_token=${githubToken}`;
+
+      // axios
+      //   // query all the pages we want to run our a11y tests against
+      //   .post(url)
+      //   .then(response => {
+      //     // gather page objects from response data
+      //     const pages = response.data.data.examples.edges.map(edge => edge.node);
+      //     // write a nicely formatted array of pages to a file
+      //     fs.writeFileSync(
+      //       path.resolve(__dirname, 'sitemap.json'),
+      //       JSON.stringify(pages, null, 2)
+      //     );
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //   });
 
       break;
     }
@@ -91,6 +113,8 @@ module.exports = {
       );
       if (!process.env.CI) {
         violationsReporter(errors, 'writefile');
+      } else {
+        violationsReporter(errors, 'comment-pr');
       }
       return violations;
     }
