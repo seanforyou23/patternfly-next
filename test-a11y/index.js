@@ -54,21 +54,24 @@ sitemap
   .reduce((prevPromise, nextPage) => prevPromise.then(() => testPageA11y(nextPage)), Promise.resolve())
   .then(_ => {
     driver.quit().then(() => {
-      const totalViolations = pfReporter.report(violatingPages);
+      const totalViolationsPromise = pfReporter.report(violatingPages);
 
-      console.log('totalViolations.length', totalViolations.length);
-      console.log('config.toleranceThreshold', config.toleranceThreshold);
+      totalViolationsPromise.then(totalViolations => {
+        // console.log('totalViolations.length', totalViolations.length);
+        // console.log('config.toleranceThreshold', config.toleranceThreshold);
 
-      if (errorsExceedThreshold(totalViolations.length, config.toleranceThreshold)) {
-        console.log(`${logColors.red}%s${logColors.reset}`, `BUILD FAILURE: Too many accessibility violations`);
-        console.log(
-          `${logColors.red}%s${logColors.reset}`,
-          `Found ${totalViolations.length}, which exceeds our goal of less than ${config.toleranceThreshold} \n`
-        );
-        process.exit(1);
-      } else {
-        console.log(`${logColors.green}%s${logColors.reset}`, 'ACCESSIBILITY AUDIT PASSES \n');
-      }
+        if (errorsExceedThreshold(totalViolations.length, config.toleranceThreshold)) {
+          console.log(`${logColors.red}%s${logColors.reset}`, `BUILD FAILURE: Too many accessibility violations`);
+          console.log(
+            `${logColors.red}%s${logColors.reset}`,
+            `Found ${totalViolations.length}, which exceeds our goal of less than ${config.toleranceThreshold} \n`
+          );
+          console.log('about to exit(1)');
+          process.exit(1);
+        } else {
+          console.log(`${logColors.green}%s${logColors.reset}`, 'ACCESSIBILITY AUDIT PASSES \n');
+        }
+      });
     });
   })
   .catch(error => {
