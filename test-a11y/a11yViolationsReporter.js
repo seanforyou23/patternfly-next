@@ -60,7 +60,6 @@ const violationsReporter = (testPages, reportType) => {
       const overErrorLimit = errorsExceedThreshold(violations.length, config.toleranceThreshold);
 
       axios
-        // query all the pages we want to run our a11y tests against
         .post(url, {
           state: overErrorLimit ? 'failure' : 'success',
           context: 'Patternfly Accessibility Reporter',
