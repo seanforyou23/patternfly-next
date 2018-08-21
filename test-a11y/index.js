@@ -32,8 +32,7 @@ const testPageA11y = testPage =>
   new Promise(resolve =>
     driver.get(`${protocol}://${host}:${port}${testPage.path}`).then(() => {
       AxeBuilder(driver)
-        .withTags(['wcag2a', 'wcag2aa'])
-        // .disableRules(['document-title'])
+        // .withTags(['wcag2a', 'wcag2aa'])
         .analyze()
         .then(results => {
           if (results.violations.length > 0) {
