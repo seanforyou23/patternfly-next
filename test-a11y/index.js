@@ -3,7 +3,7 @@ const selenium = require('selenium-webdriver');
 const AxeBuilder = require('axe-webdriverjs');
 
 const sitemap = require('../sitemap');
-const { pfReporter, updateStatus } = require('./a11yViolationsReporter');
+const { pfReporter } = require('./a11yViolationsReporter');
 const { errorsExceedThreshold } = require('./utils');
 const config = require('./config');
 
@@ -48,7 +48,7 @@ const testPageA11y = testPage =>
   );
 
 if (process.env.CI) {
-  updateStatus('pending', 'Running A11y Audit');
+  pfReporter.updateStatus('pending', 'Running A11y Audit');
 }
 
 sitemap
