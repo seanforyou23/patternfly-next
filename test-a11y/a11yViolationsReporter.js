@@ -93,9 +93,6 @@ const violationsReporter = (testPages, reportType) => {
         const overErrorLimit = errorsExceedThreshold(violations.length, config.toleranceThreshold);
         const status = overErrorLimit ? 'failure' : 'success';
         const description = overErrorLimit ? 'Too many accessibility violations' : 'A11y Checks Pass!';
-        console.log('is over error limit? ', overErrorLimit);
-        console.log('status that would be sent: ', status);
-        console.log('description that would be sent: ', description);
         updateStatus(status, description).then(() => {
           resolve();
         });
@@ -121,9 +118,6 @@ module.exports = {
         .then(() => {
           const finalReportType = !process.env.CI ? 'writefile' : 'github-status-reporter';
           return violationsReporter(errors, finalReportType);
-        })
-        .then(() => {
-          console.log('final reporter has finished');
         })
         .then(() => violations),
     updateStatus
