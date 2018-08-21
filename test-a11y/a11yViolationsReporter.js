@@ -2,16 +2,12 @@
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const config = require('./config');
+const { errorsExceedThreshold } = require('./utils');
 
 const violatingPages = [];
 const violations = [];
-const logColors = {
-  red: '\x1b[31m',
-  green: '\x1b[32m',
-  blue: '\x1b[36m',
-  yellow: '\x1b[33m',
-  reset: '\x1b[0m'
-};
+const { logColors } = config;
 
 const logOutput = testPages => {
   if (testPages.length > 0) {
@@ -55,28 +51,21 @@ const violationsReporter = (testPages, reportType) => {
       console.log(`${logColors.yellow}%s${logColors.reset}`, `Raw audit data available at: ${location}\n`);
       break;
     }
-    case 'comment-pr': {
+    case 'github-status-reporter': {
       const sha = process.env.TRAVIS_PULL_REQUEST_SHA || process.env.TRAVIS_COMMIT;
       const repoSlug = process.env.TRAVIS_REPO_SLUG;
       const githubToken = process.env.GH_TOKEN;
       const buildId = process.env.TRAVIS_BUILD_ID;
-
-      console.log(`process.env.TRAVIS_PULL_REQUEST_SHA: ${process.env.TRAVIS_PULL_REQUEST_SHA}`);
-      console.log(`process.env.TRAVIS_COMMIT: ${process.env.TRAVIS_COMMIT}`);
-      console.log(`githubToken: ${githubToken}`);
-
       const url = `https://api.github.com/repos/${repoSlug}/statuses/${sha}?access_token=${githubToken}`;
+      const overErrorLimit = errorsExceedThreshold(violations.length, config.toleranceThreshold);
 
       axios
         // query all the pages we want to run our a11y tests against
         .post(url, {
-          state: 'failure',
-          context: 'pf-a11y-reporter',
-          description: 'There was an update to the status',
+          state: overErrorLimit ? 'failure' : 'success',
+          context: 'Patternfly Accessibility Reporter',
+          description: overErrorLimit ? 'Too many accessibility violations' : 'A11y Checks Pass!',
           target_url: `https://travis-ci.org/${repoSlug}/builds/${buildId}`
-        })
-        .then(response => {
-          console.log(response);
         })
         .catch(error => {
           console.log(error);
@@ -110,7 +99,7 @@ module.exports = {
       if (!process.env.CI) {
         violationsReporter(errors, 'writefile');
       } else {
-        violationsReporter(errors, 'comment-pr');
+        violationsReporter(errors, 'github-status-reporter');
       }
       return violations;
     }
