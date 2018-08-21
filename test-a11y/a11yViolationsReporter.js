@@ -77,7 +77,7 @@ const violationsReporter = (testPages, reportType) => {
       console.log('is over error limit? ', overErrorLimit);
       console.log('status that would be sent: ', status);
       console.log('description that would be sent: ', description);
-      // updateStatus(status, description);
+      updateStatus(status, description);
       break;
     }
     default: {
