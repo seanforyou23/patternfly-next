@@ -40,6 +40,25 @@ const logOutput = testPages => {
   }
 };
 
+const updateStatus = (status, description) => {
+  const sha = process.env.TRAVIS_PULL_REQUEST_SHA || process.env.TRAVIS_COMMIT;
+  const repoSlug = process.env.TRAVIS_REPO_SLUG;
+  const githubToken = process.env.GH_TOKEN;
+  const buildId = process.env.TRAVIS_BUILD_ID;
+  const url = `https://api.github.com/repos/${repoSlug}/statuses/${sha}?access_token=${githubToken}`;
+
+  axios
+    .post(url, {
+      state: status,
+      context: 'Patternfly Accessibility Reporter',
+      description,
+      target_url: `https://travis-ci.org/${repoSlug}/builds/${buildId}`
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
 const violationsReporter = (testPages, reportType) => {
   switch (reportType) {
     case 'json':
@@ -52,24 +71,13 @@ const violationsReporter = (testPages, reportType) => {
       break;
     }
     case 'github-status-reporter': {
-      const sha = process.env.TRAVIS_PULL_REQUEST_SHA || process.env.TRAVIS_COMMIT;
-      const repoSlug = process.env.TRAVIS_REPO_SLUG;
-      const githubToken = process.env.GH_TOKEN;
-      const buildId = process.env.TRAVIS_BUILD_ID;
-      const url = `https://api.github.com/repos/${repoSlug}/statuses/${sha}?access_token=${githubToken}`;
       const overErrorLimit = errorsExceedThreshold(violations.length, config.toleranceThreshold);
-
-      axios
-        .post(url, {
-          state: overErrorLimit ? 'failure' : 'success',
-          context: 'Patternfly Accessibility Reporter',
-          description: overErrorLimit ? 'Too many accessibility violations' : 'A11y Checks Pass!',
-          target_url: `https://travis-ci.org/${repoSlug}/builds/${buildId}`
-        })
-        .catch(error => {
-          console.log(error);
-        });
-
+      const status = overErrorLimit ? 'failure' : 'success';
+      const description = overErrorLimit ? 'Too many accessibility violations' : 'A11y Checks Pass!';
+      console.log('is over error limit? ', overErrorLimit);
+      console.log('status that would be sent: ', status);
+      console.log('description that would be sent: ', description);
+      // updateStatus(status, description);
       break;
     }
     default: {
@@ -101,6 +109,7 @@ module.exports = {
         violationsReporter(errors, 'github-status-reporter');
       }
       return violations;
-    }
+    },
+    updateStatus
   }
 };

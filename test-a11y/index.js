@@ -3,7 +3,7 @@ const selenium = require('selenium-webdriver');
 const AxeBuilder = require('axe-webdriverjs');
 
 const sitemap = require('../sitemap');
-const { pfReporter } = require('./a11yViolationsReporter');
+const { pfReporter, updateStatus } = require('./a11yViolationsReporter');
 const { errorsExceedThreshold } = require('./utils');
 const config = require('./config');
 
@@ -47,11 +47,19 @@ const testPageA11y = testPage =>
     })
   );
 
+if (process.env.CI) {
+  updateStatus('pending', 'Running A11y Audit');
+}
+
 sitemap
   .reduce((prevPromise, nextPage) => prevPromise.then(() => testPageA11y(nextPage)), Promise.resolve())
   .then(_ => {
     driver.quit().then(() => {
       const totalViolations = pfReporter.report(violatingPages);
+
+      console.log('totalViolations.length', totalViolations.length);
+      console.log('config.toleranceThreshold', config.toleranceThreshold);
+
       if (errorsExceedThreshold(totalViolations.length, config.toleranceThreshold)) {
         console.log(`${logColors.red}%s${logColors.reset}`, `BUILD FAILURE: Too many accessibility violations`);
         console.log(
