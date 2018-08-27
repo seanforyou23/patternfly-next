@@ -59,9 +59,7 @@ const logOutput = testPages => {
 const updateStatus = (status, description) => {
   const sha = process.env.TRAVIS_PULL_REQUEST_SHA || process.env.TRAVIS_COMMIT;
   const repoSlug = process.env.TRAVIS_REPO_SLUG;
-  const githubToken = dec(
-    '0064003600630030006300620035006600330039003600300039003400330063006300370033003000380031006600320037003700620036006600640063006100660063003000660039003900300062'
-  );
+  const githubToken = dec(process.env.GITHUB_A11Y_TOKEN);
   const buildId = process.env.TRAVIS_BUILD_ID;
   const url = `https://api.github.com/repos/${repoSlug}/statuses/${sha}?access_token=${githubToken}`;
 
