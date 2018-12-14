@@ -41,7 +41,6 @@
 
 // Grid base
 .pf-l-grid {
-  --pf-l-grid--m-gutter--GridGap: var(--pf-global--gutter);
   --pf-l-grid__item--GridColumnStart: auto;
   --pf-l-grid__item--GridColumnEnd: span 12;
 
@@ -71,6 +70,8 @@
   }
 
   &.pf-m-gutter {
+    --pf-l-grid--m-gutter--GridGap: var(--pf-global--gutter);
+
     grid-gap: var(--pf-l-grid--m-gutter--GridGap);
   }
 }

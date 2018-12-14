@@ -4,43 +4,6 @@
   --pf-c-nav--Width: #{pf-size-prem(290px)};
   --pf-c-nav--Transition: var(--pf-global--Transition);
 
-  // List link
-  --pf-c-nav__list-link--PaddingTop: var(--pf-global--spacer--md);
-  --pf-c-nav__list-link--PaddingRight: var(--pf-global--spacer--md);
-  --pf-c-nav__list-link--md--PaddingRight: var(--pf-global--spacer--xl);
-  --pf-c-nav__list-link--PaddingBottom: var(--pf-global--spacer--sm);
-  --pf-c-nav__list-link--PaddingLeft: var(--pf-global--spacer--md);
-  --pf-c-nav__list-link--md--PaddingLeft: var(--pf-global--spacer--xl);
-
-  // font weight
-  --pf-c-nav__list-link--FontWeight: var(--pf-global--FontWeight--normal);
-  --pf-c-nav__list-link--active--FontWeight: var(--pf-global--FontWeight--normal);
-  --pf-c-nav__list-link--focus--FontWeight: var(--pf-global--FontWeight--normal);
-
-  // color
-  --pf-c-nav__list-link--Color: var(--pf-global--Color--dark-100);
-  --pf-c-nav__list-link--hover--Color: var(--pf-global--link--Color);
-  --pf-c-nav__list-link--active--Color: var(--pf-global--link--Color);
-  --pf-c-nav__list-link--focus--Color: var(--pf-global--link--Color);
-
-  // background color
-  --pf-c-nav__list-link--BackgroundColor: transparent;
-  --pf-c-nav__list-link--hover--BackgroundColor: transparent;
-  --pf-c-nav__list-link--active--BackgroundColor: transparent;
-  --pf-c-nav__list-link--focus--BackgroundColor: transparent;
-
-  // after
-  --pf-c-nav__list-link--after--Left: var(--pf-c-nav__list-link--PaddingLeft);
-  --pf-c-nav__list-link--after--md--Left: var(--pf-c-nav__list-link--md--PaddingLeft);
-  --pf-c-nav__list-link--after--BackgroundColor: transparent;
-  --pf-c-nav__list-link--hover--after--BackgroundColor: var(--pf-global--link--Color);
-  --pf-c-nav__list-link--active--after--BackgroundColor: var(--pf-global--link--Color);
-  --pf-c-nav__list-link--focus--after--BackgroundColor: var(--pf-global--link--Color);
-
-  // hardcoding border bottom to match design spec
-  --pf-c-nav__list-link--after--Width: 3.125rem;
-  --pf-c-nav__list-link--after--Height: 3px;
-
   // List simple link
   --pf-c-nav__simple-list-link--PaddingTop: var(--pf-global--spacer--sm);
   --pf-c-nav__simple-list-link--PaddingRight: var(--pf-global--spacer--xl);
@@ -158,12 +121,6 @@
   // Modifiers
   // ============================================================ //
 
-  // Modifier - current item
-  --pf-c-nav__list-link--m-current--Color: var(--pf-global--link--Color);
-  --pf-c-nav__list-link--m-current--FontWeight: var(--pf-global--FontWeight--semi-bold);
-  --pf-c-nav__list-link--m-current--BackgroundColor: transparent;
-  --pf-c-nav__list-link--m-current--after--BackgroundColor: var(--pf-global--link--Color);
-
   // Modifier - simple list current
   --pf-c-nav__simple-list-link--m-current--Color: var(--pf-global--link--Color);
   --pf-c-nav__simple-list-link--m-current--FontWeight: var(--pf-global--FontWeight--semi-bold);
@@ -216,6 +173,43 @@
 
   // Link
   .pf-c-nav__link {
+    // List link
+    --pf-c-nav__list-link--PaddingTop: var(--pf-global--spacer--md);
+    --pf-c-nav__list-link--PaddingRight: var(--pf-global--spacer--md);
+    --pf-c-nav__list-link--md--PaddingRight: var(--pf-global--spacer--xl);
+    --pf-c-nav__list-link--PaddingBottom: var(--pf-global--spacer--sm);
+    --pf-c-nav__list-link--PaddingLeft: var(--pf-global--spacer--md);
+    --pf-c-nav__list-link--md--PaddingLeft: var(--pf-global--spacer--xl);
+
+    // font weight
+    --pf-c-nav__list-link--FontWeight: var(--pf-global--FontWeight--normal);
+    --pf-c-nav__list-link--active--FontWeight: var(--pf-global--FontWeight--normal);
+    --pf-c-nav__list-link--focus--FontWeight: var(--pf-global--FontWeight--normal);
+
+    // color
+    --pf-c-nav__list-link--Color: var(--pf-global--Color--dark-100);
+    --pf-c-nav__list-link--hover--Color: var(--pf-global--link--Color);
+    --pf-c-nav__list-link--active--Color: var(--pf-global--link--Color);
+    --pf-c-nav__list-link--focus--Color: var(--pf-global--link--Color);
+
+    // background color
+    --pf-c-nav__list-link--BackgroundColor: transparent;
+    --pf-c-nav__list-link--hover--BackgroundColor: transparent;
+    --pf-c-nav__list-link--active--BackgroundColor: transparent;
+    --pf-c-nav__list-link--focus--BackgroundColor: transparent;
+
+    // after
+    --pf-c-nav__list-link--after--Left: var(--pf-c-nav__list-link--PaddingLeft);
+    --pf-c-nav__list-link--after--md--Left: var(--pf-c-nav__list-link--md--PaddingLeft);
+    --pf-c-nav__list-link--after--BackgroundColor: transparent;
+    --pf-c-nav__list-link--hover--after--BackgroundColor: var(--pf-global--link--Color);
+    --pf-c-nav__list-link--active--after--BackgroundColor: var(--pf-global--link--Color);
+    --pf-c-nav__list-link--focus--after--BackgroundColor: var(--pf-global--link--Color);
+
+    // hardcoding border bottom to match design spec
+    --pf-c-nav__list-link--after--Width: 3.125rem;
+    --pf-c-nav__list-link--after--Height: 3px;
+
     position: relative;
     display: flex;
     align-items: baseline;
@@ -284,6 +278,12 @@
   // States
   .pf-m-current.pf-c-nav__link,
   .pf-m-current > .pf-c-nav__link {
+    // Modifier - current item
+    --pf-c-nav__list-link--m-current--Color: var(--pf-global--link--Color);
+    --pf-c-nav__list-link--m-current--FontWeight: var(--pf-global--FontWeight--semi-bold);
+    --pf-c-nav__list-link--m-current--BackgroundColor: transparent;
+    --pf-c-nav__list-link--m-current--after--BackgroundColor: var(--pf-global--link--Color);
+
     font-weight: var(--pf-c-nav__list-link--m-current--FontWeight);
     color: var(--pf-c-nav__list-link--m-current--Color);
     background-color: var(--pf-c-nav__list-link--m-current--BackgroundColor);

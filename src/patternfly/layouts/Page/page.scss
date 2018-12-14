@@ -2,26 +2,6 @@
 @import "../../patternfly-utilities";
 
 .pf-l-page {
-  // Header
-  --pf-l-page__header--ZIndex: var(--pf-global--ZIndex--md);
-  --pf-l-page__header--MinHeight: #{pf-size-prem(76px)}; // fixed height for header to ensure consistency across screen sizes.
-
-  // Header brand
-  --pf-l-page__header-brand--PaddingTop: var(--pf-global--spacer--sm);
-  --pf-l-page__header-brand--PaddingRight: var(--pf-global--spacer--xl);
-  --pf-l-page__header-brand--PaddingBottom: var(--pf-global--spacer--sm);
-  --pf-l-page__header-brand--PaddingLeft: var(--pf-global--spacer--md);
-  --pf-l-page__header-brand--md--PaddingLeft: var(--pf-global--spacer--xl);
-  --pf-l-page__header-brand--md--BackgroundColor: var(--pf-global--BackgroundColor--dark-transparent-100);
-  --pf-l-page__header-brand--md--FlexBasis: #{pf-size-prem(290px)};
-
-  // Toggle
-  --pf-l-page__header-sidebar-toggle__c-button--Padding: var(--pf-global--spacer--sm);
-  --pf-l-page__header-sidebar-toggle__c-button--MarginRight: var(--pf-global--spacer--md);
-  --pf-l-page__header-sidebar-toggle__c-button--MarginLeft: calc(#{var(--pf-global--spacer--xs)} * -1);
-  --pf-l-page__header-sidebar-toggle__c-button--md--MarginLeft: calc(#{var(--pf-global--spacer--sm)} * -1);
-  --pf-l-page__header-sidebar-toggle__c-button--FontSize: var(--pf-global--FontSize--2xl);
-
   // Header brand link
   --pf-l-page__header-brand-link--MarginLeft: var(--pf-global--spacer--md);
   --pf-l-page__header-brand-link--c-brand--MaxHeight: #{pf-size-prem(60px)};
@@ -33,47 +13,6 @@
   --pf-l-page__header-nav--lg--MarginLeft: var(--pf-global--spacer--xl);
   --pf-l-page__header-nav--lg--MarginRight: var(--pf-global--spacer--xl);
   --pf-l-page__header-nav--BackgroundColor: var(--pf-global--BackgroundColor--dark-transparent-100);
-
-  // Header tools
-  --pf-l-page__header-tools--MarginTop: var(--pf-global--spacer--sm);
-  --pf-l-page__header-tools--MarginRight: var(--pf-global--spacer--md);
-  --pf-l-page__header-tools--MarginBottom: var(--pf-global--spacer--sm);
-  --pf-l-page__header-tools--md--MarginRight: var(--pf-global--spacer--xl);
-  --pf-l-page__header-tools--c-dropdown__toggle-text--MaxWidth: 20ch;
-  --pf-l-page__header-tools--c-avatar--MarginLeft: var(--pf-global--spacer--md);
-
-  // Sidebar
-  --pf-l-page__sidebar--ZIndex: var(--pf-global--ZIndex--sm);
-  --pf-l-page__sidebar--Width: 80%;
-  --pf-l-page__sidebar--md--Width: #{pf-size-prem(290px)};
-  --pf-l-page__sidebar--PaddingTop: var(--pf-global--spacer--md);
-  --pf-l-page__sidebar--PaddingBottom: var(--pf-global--spacer--md);
-  --pf-l-page__sidebar--BackgroundColor: var(--pf-global--BackgroundColor--light-100);
-  --pf-l-page__sidebar--BoxShadow: var(--pf-global--BoxShadow--lg-right);
-
-  // Sidebar transitions
-  --pf-l-page__sidebar--Transition: var(--pf-global--Transition);
-  --pf-l-page__sidebar--Transform--out: translate3d(-100%, 0, 0);
-  --pf-l-page__sidebar--md--Transform--in: translate3d(0, 0, 0);
-
-  // Main section
-  --pf-l-page__main-section--Padding: var(--pf-global--spacer--md);
-  --pf-l-page__main-section--md--Padding: var(--pf-global--spacer--xl);
-  --pf-l-page__main-section--BackgroundColor: var(--pf-global--BackgroundColor--light-300);
-  --pf-l-page__main--ZIndex: var(--pf-global--ZIndex--xs);
-
-  // Main section horizontal nav
-  --pf-l-page__main-nav--PaddingTop: var(--pf-global--spacer--md);
-  --pf-l-page__main-nav--PaddingRight: 0;
-  --pf-l-page__main-nav--PaddingBottom: var(--pf-global--spacer--md);
-  --pf-l-page__main-nav--PaddingLeft: var(--pf-global--spacer--md);
-  --pf-l-page__main-nav--md--PaddingLeft: var(--pf-global--spacer--xl);
-  --pf-l-page__main-nav--BackgroundColor: var(--pf-global--BackgroundColor--light-100);
-
-  // Main section modifiers
-  --pf-l-page__main-section--m-light--BackgroundColor: var(--pf-global--BackgroundColor--light-100);
-  --pf-l-page__main-section--m-dark-100--BackgroundColor: var(--pf-global--BackgroundColor--dark-transparent-100);
-  --pf-l-page__main-section--m-dark-200--BackgroundColor: var(--pf-global--BackgroundColor--dark-transparent-200);
 
   // Base
   display: grid;
@@ -95,6 +34,10 @@
 
 // Header
 .pf-l-page__header {
+  // Header
+  --pf-l-page__header--ZIndex: var(--pf-global--ZIndex--md);
+  --pf-l-page__header--MinHeight: #{pf-size-prem(76px)}; // fixed height for header to ensure consistency across screen sizes.
+
   @extend %pf-t-dark; // force the container to follow the dark theme
 
   grid-area: header;
@@ -113,6 +56,15 @@
 
 // Brand
 .pf-l-page__header-brand {
+  // Header brand
+  // --pf-l-page__header-brand--PaddingTop: var(--pf-global--spacer--sm);
+  --pf-l-page__header-brand--PaddingRight: var(--pf-global--spacer--xl);
+  --pf-l-page__header-brand--PaddingBottom: var(--pf-global--spacer--sm);
+  --pf-l-page__header-brand--PaddingLeft: var(--pf-global--spacer--md);
+  --pf-l-page__header-brand--md--PaddingLeft: var(--pf-global--spacer--xl);
+  --pf-l-page__header-brand--md--BackgroundColor: var(--pf-global--BackgroundColor--dark-transparent-100);
+  --pf-l-page__header-brand--md--FlexBasis: #{pf-size-prem(290px)};
+
   padding-left: var(--pf-l-page__header-brand--PaddingLeft);
 
   @media (min-width: $pf-global--breakpoint--md) {
@@ -143,6 +95,13 @@
 
 // Sidebar toggle
 .pf-l-page__header-brand-toggle {
+  // Toggle
+  --pf-l-page__header-sidebar-toggle__c-button--Padding: var(--pf-global--spacer--sm);
+  --pf-l-page__header-sidebar-toggle__c-button--MarginRight: var(--pf-global--spacer--md);
+  --pf-l-page__header-sidebar-toggle__c-button--MarginLeft: calc(#{var(--pf-global--spacer--xs)} * -1);
+  --pf-l-page__header-sidebar-toggle__c-button--md--MarginLeft: calc(#{var(--pf-global--spacer--sm)} * -1);
+  --pf-l-page__header-sidebar-toggle__c-button--FontSize: var(--pf-global--FontSize--2xl);
+
   .pf-c-button {
     padding: var(--pf-l-page__header-sidebar-toggle__c-button--Padding);
     margin-right: var(--pf-l-page__header-sidebar-toggle__c-button--MarginRight);
@@ -182,6 +141,14 @@
 
 // Header tools
 .pf-l-page__header-tools {
+  // Header tools
+  --pf-l-page__header-tools--MarginTop: var(--pf-global--spacer--sm);
+  --pf-l-page__header-tools--MarginRight: var(--pf-global--spacer--md);
+  --pf-l-page__header-tools--MarginBottom: var(--pf-global--spacer--sm);
+  --pf-l-page__header-tools--md--MarginRight: var(--pf-global--spacer--xl);
+  --pf-l-page__header-tools--c-dropdown__toggle-text--MaxWidth: 20ch;
+  --pf-l-page__header-tools--c-avatar--MarginLeft: var(--pf-global--spacer--md);
+
   align-items: center;
   margin-top: var(--pf-l-page__header-tools--MarginTop);
   margin-right: var(--pf-l-page__header-tools--MarginRight);
@@ -203,6 +170,20 @@
 
 // Sidebar
 .pf-l-page__sidebar {
+  // Sidebar
+  --pf-l-page__sidebar--ZIndex: var(--pf-global--ZIndex--sm);
+  --pf-l-page__sidebar--Width: 80%;
+  --pf-l-page__sidebar--md--Width: #{pf-size-prem(290px)};
+  --pf-l-page__sidebar--PaddingTop: var(--pf-global--spacer--md);
+  --pf-l-page__sidebar--PaddingBottom: var(--pf-global--spacer--md);
+  --pf-l-page__sidebar--BackgroundColor: var(--pf-global--BackgroundColor--light-100);
+  --pf-l-page__sidebar--BoxShadow: var(--pf-global--BoxShadow--lg-right);
+
+  // Sidebar transitions
+  --pf-l-page__sidebar--Transition: var(--pf-global--Transition);
+  --pf-l-page__sidebar--Transform--out: translate3d(-100%, 0, 0);
+  --pf-l-page__sidebar--md--Transform--in: translate3d(0, 0, 0);
+
   grid-area: 2 / 1;
   z-index: var(--pf-l-page__sidebar--ZIndex);
   width: var(--pf-l-page__sidebar--Width);
@@ -243,6 +224,8 @@
 
 // Main
 .pf-l-page__main {
+  --pf-l-page__main--ZIndex: var(--pf-global--ZIndex--xs);
+
   grid-area: main;
   z-index: var(--pf-l-page__main--ZIndex);
   display: flex;
@@ -254,6 +237,14 @@
 }
 
 .pf-l-page__main-nav {
+  // Main section horizontal nav
+  --pf-l-page__main-nav--PaddingTop: var(--pf-global--spacer--md);
+  --pf-l-page__main-nav--PaddingRight: 0;
+  --pf-l-page__main-nav--PaddingBottom: var(--pf-global--spacer--md);
+  --pf-l-page__main-nav--PaddingLeft: var(--pf-global--spacer--md);
+  --pf-l-page__main-nav--md--PaddingLeft: var(--pf-global--spacer--xl);
+  --pf-l-page__main-nav--BackgroundColor: var(--pf-global--BackgroundColor--light-100);
+
   padding:
     var(--pf-l-page__main-nav--PaddingTop)
     var(--pf-l-page__main-nav--PaddingRight)
@@ -267,6 +258,13 @@
 }
 
 .pf-l-page__main-section {
+  // Main section
+  --pf-l-page__main-section--Padding: var(--pf-global--spacer--md);
+  --pf-l-page__main-section--md--Padding: var(--pf-global--spacer--xl);
+  --pf-l-page__main-section--BackgroundColor: var(--pf-global--BackgroundColor--light-300);
+
+  // Main section modifiers // had to move these into &.pf-m-{light,dark}-{100,200} - not sure why, shouldn't nesting rules apply?
+
   padding: var(--pf-l-page__main-section--Padding);
   background-color: var(--pf-l-page__main-section--BackgroundColor);
 
@@ -281,6 +279,8 @@
   }
 
   &.pf-m-light {
+    --pf-l-page__main-section--m-light--BackgroundColor: var(--pf-global--BackgroundColor--light-100);
+
     background-color: var(--pf-l-page__main-section--m-light--BackgroundColor);
   }
 
@@ -289,10 +289,14 @@
   }
 
   &.pf-m-dark-100 {
+    --pf-l-page__main-section--m-dark-100--BackgroundColor: var(--pf-global--BackgroundColor--dark-transparent-100);
+
     background-color: var(--pf-l-page__main-section--m-dark-100--BackgroundColor);
   }
 
   &.pf-m-dark-200 {
+    --pf-l-page__main-section--m-dark-200--BackgroundColor: var(--pf-global--BackgroundColor--dark-transparent-200);
+
     background-color: var(--pf-l-page__main-section--m-dark-200--BackgroundColor);
   }
 }

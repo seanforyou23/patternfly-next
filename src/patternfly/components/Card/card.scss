@@ -10,10 +10,6 @@
   --pf-c-card__header--PaddingX: var(--pf-global--spacer--lg);
   --pf-c-card__header--PaddingBottom: var(--pf-global--spacer--sm);
 
-  // Card Body variables
-  --pf-c-card__body--PaddingY: var(--pf-global--spacer--sm);
-  --pf-c-card__body--PaddingX: var(--pf-global--spacer--lg);
-
   // Card Footer variables
   --pf-c-card__footer--PaddingY: var(--pf-global--spacer--lg);
   --pf-c-card__footer--PaddingX: var(--pf-global--spacer--lg);
@@ -42,6 +38,10 @@
 }
 
 .pf-c-card__body {
+  // Card Body variables
+  --pf-c-card__body--PaddingY: var(--pf-global--spacer--sm);
+  --pf-c-card__body--PaddingX: var(--pf-global--spacer--lg);
+
   flex: 1 1 auto;
   padding: var(--pf-c-card__body--PaddingY) var(--pf-c-card__body--PaddingX);
 }
