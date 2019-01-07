@@ -4,7 +4,6 @@
 .pf-l-page {
   // Header brand link
   --pf-l-page__header-brand-link--MarginLeft: var(--pf-global--spacer--md);
-  --pf-l-page__header-brand-link--c-brand--MaxHeight: #{pf-size-prem(60px)};
   --pf-l-page__header-brand-link--md--MaxWidth: #{pf-size-prem(150px)};
 
   // Header nav
@@ -79,6 +78,8 @@
 
 // Link
 .pf-l-page__header-brand-link {
+  --pf-l-page__header-brand-link--c-brand--MaxHeight: #{pf-size-prem(60px)};
+
   display: flex;
   flex: 1;
   align-items: center;
