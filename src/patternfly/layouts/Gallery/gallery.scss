@@ -7,9 +7,10 @@
   display: grid;
   grid-template-columns: var(--pf-l-gallery--GridTemplateColumns);
   grid-template-rows: var(--pf-l-gallery--GridTemplateRows);
-  grid-gap: var(--pf-global--gutter);
+
+  --pf-l-gallery--m-gutter--GridGap: var(--pf-global--gutter);
 
   &.pf-m-gutter {
-    grid-gap: var(--pf-global--gutter);
+    grid-gap: var(--pf-l-gallery--m-gutter--GridGap);
   }
 }
