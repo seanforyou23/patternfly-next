@@ -1,5 +1,5 @@
 .pf-t-dark {
-  @extend %pf-t-dark;
+  // @extend %pf-t-dark;
 
   &.pf-m-transparent {
     background-color: transparent;
@@ -23,7 +23,7 @@
 }
 
 .pf-t-light {
-  @extend %pf-t-light;
+  // @extend %pf-t-light;
 
   &.pf-m-transparent {
     background-color: transparent;

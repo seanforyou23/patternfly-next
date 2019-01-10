@@ -50,7 +50,7 @@
   --pf-c-modal-box__footer--ButtonSpacer: var(--pf-global--spacer--md); // Button spacer is used to manipulate margin-left and/or margin-right values at various breakpoints, with a single value.
 
   // This component always needs to be light
-  @extend %pf-t-light;
+  // @extend %pf-t-light;
 
   position: relative;
   z-index: var(--pf-c-modal-box--ZIndex);

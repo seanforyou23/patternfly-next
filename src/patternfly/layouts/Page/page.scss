@@ -37,7 +37,7 @@
   --pf-l-page__header--ZIndex: var(--pf-global--ZIndex--md);
   --pf-l-page__header--MinHeight: #{pf-size-prem(76px)}; // fixed height for header to ensure consistency across screen sizes.
 
-  @extend %pf-t-dark; // force the container to follow the dark theme
+  // @extend %pf-t-dark; // force the container to follow the dark theme
 
   grid-area: header;
   z-index: var(--pf-l-page__header--ZIndex);
@@ -286,7 +286,7 @@
   }
 
   &[class*="pf-m-dark-"] {
-    @extend %pf-t-dark; // force the container to follow the dark theme
+    // @extend %pf-t-dark; // force the container to follow the dark theme
   }
 
   &.pf-m-dark-100 {

@@ -110,7 +110,7 @@
   --pf-c-about-modal-box__button-close--hover--BackgroundColor: rgba($pf-color-black-1000, .4);
 
   // This component always needs to be dark
-  @extend %pf-t-dark;
+  // @extend %pf-t-dark;
 
   z-index: var(--pf-c-about-modal-box--ZIndex);
   display: grid;
