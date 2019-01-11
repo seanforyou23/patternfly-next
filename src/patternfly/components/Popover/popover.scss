@@ -31,9 +31,9 @@
   --pf-c-popover__header--MarginBottom: var(--pf-global--spacer--md);
 
   // Header title variables
-  --pf-c-popover__header-title--FontSize: var(--pf-c-title--m-3xl--FontSize);
-  --pf-c-popover__header-title--FontWeight: var(--pf-c-title--m-3xl--FontWeight);
-  --pf-c-popover__header-title--LineHeight: var(--pf-c-title--m-3xl--LineHeight);
+  --pf-c-popover__header-title--FontSize: var(--pf-global--FontSize--3xl);
+  --pf-c-popover__header-title--FontWeight: var(--pf-global--FontWeight--normal);
+  --pf-c-popover__header-title--LineHeight: var(--pf-global--LineHeight--sm);
 
   // Body variables
   --pf-c-popover__body--PaddingTop: var(--pf-global--spacer--sm);
